@@ -18,7 +18,7 @@ public class Main {
 
         for (int i = 0; i < WIDTH; i++) {
             for (int j = 0; j < HEIGHT; j++) {
-                bufferedImage.setRGB(i,j,generateByPixel(i,j,(i+j)%7,i+j* 100));
+                bufferedImage.setRGB(i,j,generateByPixel(i,j,(i+j)%8, (int) (Math.random() * (i*j))));
             }
         }
         File file = new File("imagine.jpg");
@@ -47,7 +47,7 @@ public class Main {
             double xx = 0.0d;
             double yy = 0.0d;
             long iteration = 0;
-            long max_iteration = HEIGHT;
+            long max_iteration = (long) (Math.random() * 10000);
             while(iteration < max_iteration && xx *xx + yy * yy <= 4.d){
                 double var22 = xx * xx - yy * yy + x0;
                 yy = 2.0D * xx * yy + y0;
@@ -60,14 +60,14 @@ public class Main {
                 return (int) (diff + iteration);
             }
         }
-        if(mod == 0){
+        if(mod == 7){
             double diff2 = -16777216;
             double x0 = -2.0d + (double)x / ((double)WIDTH * 0.37d);
             double y0 = -1.2d + (double)y / ((double)HEIGHT * 0.4d);
             double xx = 0.0d;
             double yy = 0.0d;
             long iteration = 0;
-            long max_iteration = HEIGHT;
+            long max_iteration = (long) (Math.random() * 10000);
             while(iteration < max_iteration && xx *xx + yy * yy <= 4.d){
                 double var22 = xx * xx - yy * yy + x0;
                 yy = 2.0D * xx * yy + y0;
@@ -78,6 +78,28 @@ public class Main {
                 return  0;
             } else {
                 return (int) (diff+ diff2 + iteration);
+            }
+        }
+        if(mod == 0){
+            double x0 = -2.0d + (double)x / ((double)WIDTH * 0.37d);
+            double y0 = -1.2d + (double)y / ((double)HEIGHT * 0.4d);
+            double xx = x * x;
+            double yy = y * y;
+            double zy = x;
+            double zx = y;
+            long iteration = 0;
+            long max_iteration = (long) (Math.random() * 1000);
+            while(iteration < max_iteration && xx *xx + yy * yy <= 4.d){
+                zy = 2 * zx * zy + x0;
+                zx = xx - yy + y0;
+                xx = zx * zx;
+                yy = zy * zy;
+                iteration++;
+            }
+            if(iteration == max_iteration) {
+                return  0;
+            } else {
+                return (int) (diff + iteration);
             }
         }
         return 0;
