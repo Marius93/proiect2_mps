@@ -1,3 +1,2 @@
 Resurse utilizate: 
-  * TODO
   * wikipedia: l-systems, fractal landscape
